@@ -1,4 +1,5 @@
 {
+  "author": "LufyCZ",
   "dependencies": {
     "@types/express": "^4.17.13",
     "@types/isomorphic-fetch": "^0.0.36",

@@ -58,13 +58,15 @@ export async function getNftsByHolders({
 
   if (users.length === 0) return [];
 
-  return users.reduce(
-    (acc: any, cur: any) => [
-      ...acc,
-      cur.nfts.map((nft: { id: string }) => Number(nft.id)),
-    ],
-    []
-  );
+  return users
+    .reduce(
+      (acc: any, cur: any) => [
+        ...acc,
+        cur.nfts.map((nft: { id: string }) => Number(nft.id)),
+      ],
+      []
+    )
+    .flat();
 }
 
 export async function getHolderByNft(

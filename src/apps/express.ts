@@ -22,10 +22,15 @@ app.post("/submitMessage", jsonParser, async (req, res) => {
     const signerAddress = utils.verifyMessage(message, signature).toLowerCase();
     if (address !== signerAddress) throw new Error("Signature invalid.");
 
-    addUserAddress(discordId, address);
+    const removedUserIdFrom = await addUserAddress(discordId, address);
 
     if (!globalThis.context.discordClient)
       throw new Error("Discord client unavailable.");
+
+    if (!!removedUserIdFrom) {
+      await updateRoles(removedUserIdFrom, globalThis.context.discordClient);
+    }
+
     await updateRoles(discordId, globalThis.context.discordClient);
   } catch (err) {
     res.status(500).send(err);

@@ -34,11 +34,14 @@ function writeMap(map: UserAddressesMap) {
 
 const UserAddressesInMemory = readMap();
 
+// Returns user id it removed the address from if applicable
 export async function addUserAddress(userId: string, address: string) {
   address = address.toLowerCase();
 
+  let userIdRemovedFrom = undefined;
   UserAddressesInMemory.forEach((value, key) => {
     if (value.includes(address)) {
+      userIdRemovedFrom = key;
       UserAddressesInMemory.set(
         key,
         value.filter((addy) => addy !== address)
@@ -52,6 +55,8 @@ export async function addUserAddress(userId: string, address: string) {
   ]);
 
   writeMap(UserAddressesInMemory);
+
+  return userIdRemovedFrom;
 }
 
 export function getUsersAdresses(userId: string) {

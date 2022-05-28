@@ -4,5 +4,5 @@ export const SUSHIMI_HOLDER_SUBGRAPH =
 
 export const ALL_SUSHIMI_TYPES = ["Normal", "Zombie", "Unique"] as const;
 
-export const SERVER_ID = "376050216584871936";
-export const CHANNEL_ID = "972473705303265340";
+export const SERVER_ID = "879842094536081448";
+export const CHANNEL_ID = "980140673669943386";

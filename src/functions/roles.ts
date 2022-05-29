@@ -1,5 +1,5 @@
 import { Client } from "discord.js";
-import { ALL_SUSHIMI_TYPES, SERVER_ID } from "../constants";
+import { ALL_SUSHIMI_TYPES, ROLE_MAP, SERVER_ID } from "../constants";
 import { getNftsByHolders } from "../fetchers/sushimiHolders";
 import { getType as getSushimiType } from "../fetchers/sushimiType";
 import { getUsersAdresses } from "../fetchers/userAddresses";
@@ -18,7 +18,7 @@ export async function updateRoles(userId: string) {
   await guild.roles.fetch();
 
   for (const type of ALL_SUSHIMI_TYPES) {
-    const role = guild.roles.cache.find((role) => role.name === type);
+    const role = guild.roles.cache.find((role) => role.name === ROLE_MAP[type]);
     if (!role) {
       console.log(`Role ${type} doesn't exist!`);
       continue;

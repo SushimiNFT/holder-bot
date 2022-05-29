@@ -6,3 +6,9 @@ export const ALL_SUSHIMI_TYPES = ["Normal", "Zombie", "Unique"] as const;
 
 export const SERVER_ID = "879842094536081448";
 export const CHANNEL_ID = "980140673669943386";
+
+export const ROLE_MAP = {
+  Normal: "Hero",
+  Zombie: "Zombie",
+  Unique: "Unique",
+} as const;

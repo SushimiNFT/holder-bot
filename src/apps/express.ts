@@ -28,10 +28,10 @@ app.post("/submitMessage", jsonParser, async (req, res) => {
       throw new Error("Discord client unavailable.");
 
     if (!!removedUserIdFrom) {
-      await updateRoles(removedUserIdFrom, globalThis.context.discordClient);
+      await updateRoles(removedUserIdFrom);
     }
 
-    await updateRoles(discordId, globalThis.context.discordClient);
+    await updateRoles(discordId);
   } catch (err) {
     res.status(500).send(err);
     return;

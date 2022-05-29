@@ -65,7 +65,7 @@ client.on("interactionCreate", async (interaction) => {
     }
 
     if (interaction.customId === "update") {
-      await updateRoles(interaction!.user!.id, client);
+      await updateRoles(interaction!.user!.id);
       await interaction.deferUpdate();
     }
   }

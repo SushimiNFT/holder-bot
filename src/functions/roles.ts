@@ -4,7 +4,9 @@ import { getNftsByHolders } from "../fetchers/sushimiHolders";
 import { getType as getSushimiType } from "../fetchers/sushimiType";
 import { getUsersAdresses } from "../fetchers/userAddresses";
 
-export async function updateRoles(userId: string, client: Client) {
+export async function updateRoles(userId: string) {
+  const client = globalThis.context.discordClient!;
+
   const addressesOfUser = getUsersAdresses(userId) || [];
   const nftsOfUser = await getNftsByHolders({ holders: addressesOfUser });
   const newRolesOfUser = Array.from(

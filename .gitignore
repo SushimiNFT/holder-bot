@@ -2,8 +2,7 @@ node_modules
 
 .env
 
-SushimiTypes.json
-UserAddresses.json
+database
 
 yarn-error.log
 

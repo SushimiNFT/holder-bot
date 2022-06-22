@@ -5,9 +5,11 @@ import "dotenv/config";
 
 type UserAddressesMap = Map<string, string[]>;
 
+const filePath = path.resolve("./database/UserAddresses.json");
+
 function readMap() {
   const json = JSON.parse(
-    readFileSync(path.resolve("./UserAddresses.json"), {
+    readFileSync(filePath, {
       encoding: "utf-8",
     })
   );
@@ -26,10 +28,7 @@ function writeMap(map: UserAddressesMap) {
     json[key] = value;
   });
 
-  writeFileSync(
-    path.resolve("./UserAddresses.json"),
-    JSON.stringify(json, null, 2)
-  );
+  writeFileSync(filePath, JSON.stringify(json, null, 2));
 }
 
 const UserAddressesInMemory = readMap();

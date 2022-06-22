@@ -8,9 +8,11 @@ import { ALL_SUSHIMI_TYPES } from "../constants";
 type SushimiTypes = typeof ALL_SUSHIMI_TYPES[number];
 type SushimiTypesMap = Map<number, SushimiTypes | undefined>;
 
+const filePath = path.resolve("./database/SushimiTypes.json");
+
 function readMap() {
   const json = JSON.parse(
-    readFileSync(path.resolve("./SushimiTypes.json"), {
+    readFileSync(filePath, {
       encoding: "utf-8",
     })
   );
@@ -29,10 +31,7 @@ function writeMap(map: SushimiTypesMap) {
     json[key] = value;
   });
 
-  writeFileSync(
-    path.resolve("./SushimiTypes.json"),
-    JSON.stringify(json, null, 2)
-  );
+  writeFileSync(filePath, JSON.stringify(json, null, 2));
 }
 
 const SushimiTypesInMemory = readMap();
